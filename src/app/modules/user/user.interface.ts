@@ -1,7 +1,7 @@
-export type TUser ={
-    name:string,
-    email:string,
-    password:string,
-    role: string,
-    isBlocked:boolean
-}
+export type TUser = {
+  name: string;
+  email: string;
+  password: string;
+  role: 'admin' | 'user';
+  isBlocked: boolean;
+};
