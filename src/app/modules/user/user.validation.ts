@@ -5,8 +5,6 @@ const userValidationSchema = z.object({
     name: z.string(),
     email: z.string(),
     password: z.string(),
-    role: z.string(),
-    isBlocked: z.boolean(),
   }),
 });
 
