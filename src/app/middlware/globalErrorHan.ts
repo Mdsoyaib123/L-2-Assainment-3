@@ -59,7 +59,6 @@ const globalErrorHan = (
     message,
     errorSources,
     stack: config.NODE_ENV === 'development' ? err?.stack : null,
-    err,
   });
 };
 
