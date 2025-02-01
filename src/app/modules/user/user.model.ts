@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { TUser } from './user.interface';
 import validator from 'validator';
 
@@ -11,7 +11,7 @@ export const userSchema = new Schema<TUser>(
     email: {
       type: String,
       required: true,
-      unique:true,
+      unique: true,
       validate: {
         validator: (value: string) => validator.isEmail(value),
         message: '{VALUE} is not email type ',
@@ -35,3 +35,5 @@ export const userSchema = new Schema<TUser>(
     timestamps: true,
   },
 );
+
+export const userModel = model<TUser>('user', userSchema);
