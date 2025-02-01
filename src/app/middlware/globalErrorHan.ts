@@ -16,7 +16,7 @@ const globalErrorHan = (
   next: NextFunction,
 ) => {
   // setting default values
-  let statusCode =  500;
+  let statusCode = 500;
   let message = 'Something went wrong ';
 
   let errorSources: TErrorSources[] = [
@@ -27,23 +27,23 @@ const globalErrorHan = (
   ];
 
   if (err instanceof ZodError) {
-    const simplifyError = handleZodError(err);
+    const modifyError = handleZodError(err);
 
-    statusCode = simplifyError?.statusCode;
-    message = simplifyError?.message;
-    errorSources = simplifyError?.errorSources;
+    statusCode = modifyError?.statusCode;
+    message = modifyError?.message;
+    errorSources = modifyError?.errorSources;
   } else if (err?.name === 'ValidationError') {
-    const simplifyError = handleValidationError(err);
+    const modifyError = handleValidationError(err);
 
-    statusCode = simplifyError?.statusCode;
-    message = simplifyError?.message;
-    errorSources = simplifyError?.errorSources;
+    statusCode = modifyError?.statusCode;
+    message = modifyError?.message;
+    errorSources = modifyError?.errorSources;
   } else if (err?.name === 'CastError') {
-    const simplifyError = handleCastError(err);
+    const modifyError = handleCastError(err);
 
-    statusCode = simplifyError?.statusCode;
-    message = simplifyError?.message;
-    errorSources = simplifyError?.errorSources;
+    statusCode = modifyError?.statusCode;
+    message = modifyError?.message;
+    errorSources = modifyError?.errorSources;
   } else if (err instanceof Error) {
     message = err.message;
     errorSources = [
@@ -59,6 +59,7 @@ const globalErrorHan = (
     message,
     errorSources,
     stack: config.NODE_ENV === 'development' ? err?.stack : null,
+    err,
   });
 };
 
