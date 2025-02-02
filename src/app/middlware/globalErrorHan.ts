@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextFunction, Request, Response } from 'express';
-import { ZodError, ZodIssue } from 'zod';
+import {  NextFunction, Request, Response } from 'express';
+import { ZodError } from 'zod';
 import { TErrorSources } from '../interface/error';
 import config from '../config';
 import handleZodError from '../errors/handleZodError';
 import handleValidationError from '../errors/handleValidationError';
 import handleCastError from '../errors/handleCastError';
 
-const globalErrorHan = (
+const globalErrorHandler = (
   err: any,
   req: Request,
-  res: Response,
+  res: Record<string, any>,
   next: NextFunction,
 ) => {
   // setting default values
@@ -62,4 +62,4 @@ const globalErrorHan = (
   });
 };
 
-export default globalErrorHan;
+export default globalErrorHandler;

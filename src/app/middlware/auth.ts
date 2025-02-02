@@ -7,10 +7,10 @@ import { TUserRole } from '../modules/user/user.interface';
 
 const auth = (...requiredRole: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    
-    const token = req.headers.authorization;
+    const token = req.headers.authorization?.split(' ')[1];
+    console.log(token);
     if (!token) {
-      throw new Error(' You are not Authorized! ');
+      throw new Error(' token not found ');
     }
 
     // check if the token is valid
@@ -20,14 +20,14 @@ const auth = (...requiredRole: TUserRole[]) => {
     ) as JwtPayload;
     const { email, role } = decoded;
 
-    const userData = await userModel.findOne({email:email});
-    // check user already exit 
+    const userData = await userModel.findOne({ email: email });
+    // check user already exit
     if (!userData) {
       throw new Error('The user is not found');
     }
 
     // check if the user is blocked
-    const Status = userData?.isBlocked
+    const Status = userData?.isBlocked;
     if (Status) {
       throw new Error('The user is blocked ');
     }
