@@ -69,7 +69,7 @@ const deleteBlog = async (id: string, email: string) => {
 };
 
 const deleteBlogByAdmin = async (id:string)=>{
-
+  
   const result = await blogModel.deleteOne({ _id: id });
   return result;
 }
