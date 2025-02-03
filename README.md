@@ -42,6 +42,9 @@ create a .env file . Then input your Port and Database url . like this ---
 - NODE_ENV= Enter your working position;
 - PORT= Enter your port ;
 - DATABASE_URL= Enter your port ;
+- BCRYPT_SALTROUND= Enter your salt round
+- jWT_ACCESS_SECRET= Enter your secret    
+
 
 ## Run the Application in development
 
