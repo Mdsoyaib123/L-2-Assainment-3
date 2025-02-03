@@ -34,21 +34,6 @@ A backend for a blogging platform with secure authentication, role-based access 
 
 ---
 
-## Models
-
-### User Model
-```typescript
-{
-  name: string;
-  email: string;
-  password: string;
-  role: "admin" | "user"; // Default: "user"
-  isBlocked: boolean; // Default: false
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-
 
 ## How to run the application in locally
 
