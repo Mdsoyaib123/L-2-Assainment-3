@@ -32,7 +32,7 @@ A backend for a blogging platform with secure authentication, role-based access 
   - Search, sort, and filter blogs.
   - Includes blog title, content, and author details.
 
---
+---
 
 
 ## How to run the application in locally
